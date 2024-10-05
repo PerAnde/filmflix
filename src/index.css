@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    /* Cores Primarias */
+    --background: #00030a;
+    --branco: #FFFFFF;
+    --cinza: #37393d;
+    --cinza-claro: #999999;
+    --cinza-escuro: #0A0D14;
+    /* Cores Secundarias */
+    --azul: #2970FA;
+    --amarelo: #D9C50F;
+    --laranja: #D9580F;
+    --lilaz: #980FD9;
+    --rosa: #D90FC5;
+    --roxo: #5C0FD9;
+    --turquesa: #0FCDD9;
+    --verde: #24D020;
+    --verde-claro: #0FD990;
+    --vermelho: #C72424;
+
+    /* Textos */
+    --texto-escuro: #00030a;
+    --texto-claro: #FFFFFF;
+
+    /* Fonte Weight */
+    --font-extra-light: 200;
+    --font-light: 300;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+html {
+    /* Reseta fonte da página de 16px para 10 px */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6rem;
+    color: var(--branco);
+    background-color: var(--background);
+}
+
+a {
+    color: var(--branco);
+    text-decoration: none;
+}
+
+.container{
+    max-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 2rem;
+}
