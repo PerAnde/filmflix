@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
 
 * {
     margin: 0;
@@ -12,11 +12,14 @@
     /* Cores Primarias */
     --background: #00030a;
     --branco: #FFFFFF;
+    --branco-40: rgba(255, 255, 255, .4);
     --cinza: #37393d;
     --cinza-claro: #999999;
-    --cinza-escuro: #0A0D14;
+    --cinza-escuro-65: rgba(10, 13, 20, .65);
+    --cinza-escuro-85: rgba(30, 34, 40, 0.85);
     /* Cores Secundarias */
-    --azul: #2970FA;
+    --azul: #3276ff;
+    --azul-40: rgba(50, 118, 255, .4);
     --amarelo: #D9C50F;
     --laranja: #D9580F;
     --lilaz: #980FD9;
@@ -33,7 +36,7 @@
 
     /* Fonte Weight */
     --font-extra-light: 200;
-    --font-light: 300;
+    --font-regular: 400;
     --font-semi-bold: 600;
     --font-bold: 700;
 }
@@ -55,7 +58,31 @@ a {
     text-decoration: none;
 }
 
-.container{
+a.btn-padrao {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: 1.8rem;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    background-color: var(--cinza);
+    transition: .3s;
+}
+
+a.btn-padrao:hover {
+    color: var(--texto-escuro);
+    background-color: var(--branco);
+}
+
+a.btn-padrao.btn-card{
+    font-size: 1.5rem;
+}
+
+img{
+    width: 100%;
+}
+
+.container {
     max-width: 95%;
     margin-right: auto;
     margin-left: auto;
