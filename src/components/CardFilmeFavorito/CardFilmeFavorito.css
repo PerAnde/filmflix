@@ -1,0 +1,29 @@
+.card-filme-favorito{
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+}
+
+.filme-favorito-img {
+    width: 200px;
+}
+
+.filme-favorito-img img{
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.box-infos-filme-favorito{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.box-titulo-filme-favorito span{
+    color: var(--cinza-claro);
+}
+
+.box-opcoes{
+    display: flex;
+    gap: 2rem;
+}

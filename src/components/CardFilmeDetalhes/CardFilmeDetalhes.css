@@ -1,0 +1,15 @@
+.detalhes-filme{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 4rem 0;
+}
+
+.detalhes-filme p{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem;
+    border-radius: .5rem;
+    background-color: var(--cinza);
+}

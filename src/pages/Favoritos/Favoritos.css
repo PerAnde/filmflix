@@ -1,0 +1,24 @@
+.box-filmes-favoritos{
+    margin-top: 8rem;
+}
+
+.box-titulo-pagina-filmes-favoritos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.box-titulo-pagina-filmes-favoritos p{
+    color: var(--cinza-claro);
+}
+
+.box-filmes-favoritos span{
+    color: var(--cinza-claro);
+}
+
+.filmes-favoritos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}

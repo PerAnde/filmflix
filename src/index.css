@@ -11,6 +11,7 @@
 :root {
     /* Cores Primarias */
     --background: #00030a;
+    --background-light: #121720;
     --branco: #FFFFFF;
     --branco-40: rgba(255, 255, 255, .4);
     --cinza: #37393d;
@@ -18,9 +19,9 @@
     --cinza-escuro-65: rgba(10, 13, 20, .65);
     --cinza-escuro-85: rgba(30, 34, 40, 0.85);
     /* Cores Secundarias */
-    --azul: #3276ff;
+    --azul: #2068f8;
     --azul-40: rgba(50, 118, 255, .4);
-    --amarelo: #D9C50F;
+    --amarelo: #fde610;
     --laranja: #D9580F;
     --lilaz: #980FD9;
     --rosa: #D90FC5;
@@ -63,7 +64,7 @@ a.btn-padrao {
     align-items: center;
     gap: .7rem;
     font-size: 1.8rem;
-    padding: 1.5rem;
+    padding: 1.7rem;
     border-radius: .5rem;
     background-color: var(--cinza);
     transition: .3s;
@@ -78,6 +79,54 @@ a.btn-padrao.btn-card{
     font-size: 1.5rem;
 }
 
+.btn-padrao-favoritar{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: .3s;
+}
+
+.box-icon{
+    display: flex;
+    padding: 1.5rem;
+    border-radius: 50%;
+    font-size: 5.55rem;
+}
+
+.btn-padrao-favoritar:hover{
+    color: var(--azul);
+}
+
+.btn-padrao-favoritar.adicionado{
+    color: var(--cinza-claro);
+    cursor: auto;
+}
+
+.icon{
+    font-size: 2rem;
+}
+
+.icon-favoritar{
+    font-size: 3rem;
+}
+
+.btn-ver-detalhes-favorito{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 0;
+    color: var(--cinza-claro);
+    transition: .3s;
+}
+
+.btn-ver-detalhes-favorito:hover{
+    color: var(--branco);
+}
+
+.btn-ver-detalhes-favorito.btn-excluir:hover{
+    color: var(--vermelho);
+}
+
 img{
     width: 100%;
 }
@@ -87,4 +136,16 @@ img{
     margin-right: auto;
     margin-left: auto;
     padding: 0 2rem;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.header-section a {
+    font-size: 1.2rem;
+    color: var(--cinza-claro);
 }

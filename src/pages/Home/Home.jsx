@@ -4,9 +4,8 @@ import api from '../../services/api'
 
 import './Home.css'
 
-// Icones
-import { PiInfoBold } from "react-icons/pi";
-import { PiCheckCircleFill } from "react-icons/pi";
+import { CardFilme } from '../../components/CardFilme/CardFilme';
+import { PageFilmePrincipal } from '../../components/PageFilmePrincipal/CardFilmePrincipal';
 
 export const Home = () => {
 
@@ -21,6 +20,8 @@ export const Home = () => {
     // Todos os que ainda vao ser lancados
     const [preLancamento, setPreLancamento] = useState([]);
 
+    // Loading...
+    const [loading, setLoading] = useState(true);
 
     // Buscando dados da API
     useEffect(() => {
@@ -35,7 +36,7 @@ export const Home = () => {
                 }
             })
 
-            setTopFilmes(responseTop1.data.results.slice(3, 4))
+            setTopFilmes(responseTop1.data.results.slice(0, 1))
 
             // Buscando filmes em cartaz
             const responseEmCartaz = await api.get("movie/now_playing", {
@@ -80,6 +81,7 @@ export const Home = () => {
             })
 
             setMaisVotados(responseMaisAvaliados.data.results.slice(1, 7))
+            // setLoading(false)
         }
 
         loadFilmes();
@@ -89,43 +91,18 @@ export const Home = () => {
     return (
         <div className="box-home">
 
-            <div className="container">
-                <div className="conteudo-filme-principal">
-                    {topFilme.map((filme) => {
-                        return (
-                            <div className="descricao-filme-principal" key={filme.id}>
-
-                                <h1 className='nome-filme-principal'>{filme.title}</h1>
-
-                                <div className="sinopse-filme">
-                                    <p>{filme.overview}</p>
-                                </div>
-
-                                <div className="infos-filme">
-                                    <p>Nota: {filme.vote_average}</p>
-                                    <p>|</p>
-                                    <p>{filme.release_date.slice(0, 4)}</p>
-                                </div>
-
-                                <div className="box-btn-mais-infos">
-                                    <Link to={`/filme/${filme.id}`} className='btn-padrao'><PiInfoBold /> Mais informações</Link>
-                                </div>
-
-                                <p className='principal-lancamento'><span><PiCheckCircleFill /></span>Filme em alta</p>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-
-            <div className="fundo-degrade-esquerda"></div>
-            <div className="fundo-degrade-baixo"></div>
-            <div className='background-filme-principal'>
+            <div className="conteudo-filme-principal">
                 {topFilme.map((filme) => {
                     return (
-                        <div className="img-filme-principal" key={filme.id}>
-                            <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title} />
-                        </div>
+                        <PageFilmePrincipal
+                            key={filme.id}
+                            title={filme.title}
+                            overview={filme.overview}
+                            vote_average={filme.vote_average}
+                            release_date={filme.release_date}
+                            link_id={filme.id}
+                            backdrop_path={filme.backdrop_path}
+                        />
                     )
                 })}
             </div>
@@ -141,18 +118,16 @@ export const Home = () => {
                     <div className="outros-filmes">
                         {filmesEmCartaz.map((filme) => {
                             return (
-                                <div className="box-filme">
-                                    <div className="box-mais-infos-card">
-                                        <div className="mais-infos-card">
-                                            <h2>{filme.title}</h2>
-                                            <Link to={`/filme/${filme.id}`} className='btn-padrao btn-card'><PiInfoBold /> Mais informações</Link>
-                                        </div>
-                                    </div>
-                                    <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="" />
-                                </div>
+                                <CardFilme
+                                    key={filme.id}
+                                    title={filme.title}
+                                    link_id={filme.id}
+                                    poster_path={filme.poster_path}
+                                />
                             )
                         })}
                     </div>
+
                 </div>
 
                 <div className="container">
@@ -165,18 +140,16 @@ export const Home = () => {
                     <div className="outros-filmes">
                         {filmePopulares.map((filme) => {
                             return (
-                                <div className="box-filme">
-                                    <div className="box-mais-infos-card">
-                                        <div className="mais-infos-card">
-                                            <h2>{filme.title}</h2>
-                                            <Link to={`/filme/${filme.id}`} className='btn-padrao btn-card'><PiInfoBold /> Mais informações</Link>
-                                        </div>
-                                    </div>
-                                    <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="" />
-                                </div>
+                                <CardFilme
+                                    key={filme.id}
+                                    title={filme.title}
+                                    link_id={filme.id}
+                                    poster_path={filme.poster_path}
+                                />
                             )
                         })}
                     </div>
+
                 </div>
 
                 <div className="container">
@@ -189,15 +162,12 @@ export const Home = () => {
                     <div className="outros-filmes">
                         {preLancamento.map((filme) => {
                             return (
-                                <div className="box-filme">
-                                    <div className="box-mais-infos-card">
-                                        <div className="mais-infos-card">
-                                            <h2>{filme.title}</h2>
-                                            <Link to={`/filme/${filme.id}`} className='btn-padrao btn-card'><PiInfoBold /> Mais informações</Link>
-                                        </div>
-                                    </div>
-                                    <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="" />
-                                </div>
+                                <CardFilme
+                                    key={filme.id}
+                                    title={filme.title}
+                                    link_id={filme.id}
+                                    poster_path={filme.poster_path}
+                                />
                             )
                         })}
                     </div>
@@ -210,21 +180,20 @@ export const Home = () => {
                         <Link><u>Ver tudo</u></Link>
                     </div>
 
+
                     <div className="outros-filmes">
                         {maisVotados.map((filme) => {
                             return (
-                                <div className="box-filme">
-                                    <div className="box-mais-infos-card">
-                                        <div className="mais-infos-card">
-                                            <h2>{filme.title}</h2>
-                                            <Link to={`/filme/${filme.id}`} className='btn-padrao btn-card'><PiInfoBold /> Mais informações</Link>
-                                        </div>
-                                    </div>
-                                    <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="" />
-                                </div>
+                                <CardFilme
+                                    key={filme.id}
+                                    title={filme.title}
+                                    link_id={filme.id}
+                                    poster_path={filme.poster_path}
+                                />
                             )
                         })}
                     </div>
+
                 </div>
             </div>
 
