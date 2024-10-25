@@ -17,6 +17,9 @@ export const Filme = () => {
     const [filme, setFilme] = useState({})
     const [jaEstaSalvo, setJaEstaSalvo] = useState(false)
 
+    // Loading...
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
 
         async function loadFilme() {
@@ -29,12 +32,12 @@ export const Filme = () => {
             })
                 .then((response) => {
                     setFilme(response.data)
+                    setLoading(false)
                 })
                 .catch(() => {
                     navigate("/", { replace: true })
                     return
                 })
-
         }
 
         loadFilme();
@@ -49,9 +52,9 @@ export const Filme = () => {
 
         const filmeJaSalvo = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id);
 
-        setJaEstaSalvo(filmeJaSalvo); // Atualiza o estado com a informação
+        setJaEstaSalvo(filmeJaSalvo);
 
-    }, [filme.id]); // Executa a verificação sempre que o filme.id mudar
+    }, [filme.id]);
 
     function salvarFilme() {
         const minhaLista = localStorage.getItem("@filmflix");
@@ -79,6 +82,7 @@ export const Filme = () => {
         <div className="box-home">
 
             <div className="conteudo-filme-principal">
+
                 <PageFilmeDetalhes
                     key={filme.id}
                     title={filme.title}
@@ -90,28 +94,29 @@ export const Filme = () => {
                     genres={filme.genres ? filme.genres.map(genre => genre.name).join(" • ") : ""}
                     salvarFilme={salvarFilme}
                     jaEstaSalvo={jaEstaSalvo}
+                    loading={loading}
                 />
+
             </div>
 
-            <div className="box-detalhes-filme">
-                <div className="container">
+            <div className="container">
 
-                    <div className="header-section">
-                        <h3>Detalhes do filme</h3>
-                    </div>
-
-                    <CardFilmeDetalhes
-                        title={filme.title}
-                        budget={filme.budget !== undefined ? filme.budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Indisponível'}
-                        revenue={filme.revenue !== undefined ? filme.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Indisponível'}
-                        runtime={filme.runtime}
-                        origin_country={filme.origin_country}
-                        vote_count={filme.vote_count}
-                    />
-
+                <div className="header-section">
+                    <h3>Detalhes do filme</h3>
                 </div>
 
+                <CardFilmeDetalhes
+                    title={filme.title}
+                    budget={filme.budget !== undefined ? filme.budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Indisponível'}
+                    revenue={filme.revenue !== undefined ? filme.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Indisponível'}
+                    runtime={filme.runtime}
+                    origin_country={filme.origin_country}
+                    vote_count={filme.vote_count}
+                    loading={loading}
+                />
+
             </div>
+
         </div>
     )
 }

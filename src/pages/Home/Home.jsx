@@ -5,7 +5,7 @@ import api from '../../services/api'
 import './Home.css'
 
 import { CardFilme } from '../../components/CardFilme/CardFilme';
-import { PageFilmePrincipal } from '../../components/PageFilmePrincipal/CardFilmePrincipal';
+import { PageFilmePrincipal } from '../../components/PageFilmePrincipal/PageFilmePrincipal';
 
 export const Home = () => {
 
@@ -17,8 +17,6 @@ export const Home = () => {
     const [filmePopulares, setFilmesPopulares] = useState([]);
     // Todos os mais votados
     const [maisVotados, setMaisVotados] = useState([]);
-    // Todos os que ainda vao ser lancados
-    const [preLancamento, setPreLancamento] = useState([]);
 
     // Loading...
     const [loading, setLoading] = useState(true);
@@ -47,7 +45,7 @@ export const Home = () => {
                 }
             })
 
-            setFilmesEmCartaz(responseEmCartaz.data.results.slice(1, 7))
+            setFilmesEmCartaz(responseEmCartaz.data.results.slice(1, 11))
 
             // Buscando filmes populares
             const responsePopular = await api.get("movie/popular", {
@@ -58,18 +56,7 @@ export const Home = () => {
                 }
             })
 
-            setFilmesPopulares(responsePopular.data.results.slice(1, 7))
-
-            // Buscando filmes que ainda vao lancar
-            const responseEstreia = await api.get("movie/upcoming", {
-                params: {
-                    api_key: "b859a783fbef6282a5a2b34ec41291c8",
-                    language: "pt-BR",
-                    page: 1,
-                }
-            })
-
-            setPreLancamento(responseEstreia.data.results.slice(1, 7))
+            setFilmesPopulares(responsePopular.data.results.slice(1, 16))
 
             // Buscando filmes mais avaliados
             const responseMaisAvaliados = await api.get("movie/top_rated", {
@@ -80,8 +67,8 @@ export const Home = () => {
                 }
             })
 
-            setMaisVotados(responseMaisAvaliados.data.results.slice(1, 7))
-            // setLoading(false)
+            setMaisVotados(responseMaisAvaliados.data.results.slice(1, 11))
+            setLoading(false)
         }
 
         loadFilmes();
@@ -99,9 +86,10 @@ export const Home = () => {
                             title={filme.title}
                             overview={filme.overview}
                             vote_average={filme.vote_average}
-                            release_date={filme.release_date}
+                            release_date={filme.release_date ? new Date(filme.release_date).toLocaleDateString('pt-BR') : 'Indisponível'}
                             link_id={filme.id}
                             backdrop_path={filme.backdrop_path}
+                            loading={loading}
                         />
                     )
                 })}
@@ -112,7 +100,7 @@ export const Home = () => {
 
                     <div className="header-section">
                         <h3>Em cartaz</h3>
-                        <Link><u>Ver tudo</u></Link>
+                        <Link to={"/emcartaz"}><u>Ver tudo</u></Link>
                     </div>
 
                     <div className="outros-filmes">
@@ -134,7 +122,7 @@ export const Home = () => {
 
                     <div className="header-section">
                         <h3>Populares</h3>
-                        <Link><u>Ver tudo</u></Link>
+                        <Link to={"/populares"}><u>Ver tudo</u></Link>
                     </div>
 
                     <div className="outros-filmes">
@@ -155,31 +143,9 @@ export const Home = () => {
                 <div className="container">
 
                     <div className="header-section">
-                        <h3>Próximos Estreias</h3>
-                        <Link><u>Ver tudo</u></Link>
-                    </div>
-
-                    <div className="outros-filmes">
-                        {preLancamento.map((filme) => {
-                            return (
-                                <CardFilme
-                                    key={filme.id}
-                                    title={filme.title}
-                                    link_id={filme.id}
-                                    poster_path={filme.poster_path}
-                                />
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="container">
-
-                    <div className="header-section">
                         <h3>Mais avaliados</h3>
-                        <Link><u>Ver tudo</u></Link>
+                        <Link to={"/maisavaliados"}><u>Ver tudo</u></Link>
                     </div>
-
 
                     <div className="outros-filmes">
                         {maisVotados.map((filme) => {

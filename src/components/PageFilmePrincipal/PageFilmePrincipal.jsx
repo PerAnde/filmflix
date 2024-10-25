@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import '../PageFilmePrincipal/PageFilmePrincipal.css'
+import './PageFilmePrincipal.css'
 
 // Icones
-import { PiPlayFill } from "react-icons/pi";
-import { PiCheckBold } from "react-icons/pi";
-import { PiSparkle } from "react-icons/pi";
+import { PiInfoBold } from "react-icons/pi";
+import { PiCheckCircleFill } from "react-icons/pi";
 
 import { CardSkeletonDetalhesFilmes } from '../CardsSkeleton/CardSkeletonDetalhesFilmes/CardSkeletonDetalhesFilmes';
 
-export const PageFilmeDetalhes = ({ key_id, title, overview, vote_average, release_date, genres, backdrop_path, salvarFilme, jaEstaSalvo, loading }) => {
+export const PageFilmePrincipal = ({ key_id, title, overview, vote_average, release_date, link_id, backdrop_path, loading }) => {
     return (
         <>
             <div className="container">
@@ -26,7 +25,7 @@ export const PageFilmeDetalhes = ({ key_id, title, overview, vote_average, relea
                             <h1 className='nome-filme-principal'>{title}</h1>
 
                             <div className="sinopse-filme">
-                                <p>{overview}</p>
+                                <p>{overview.length > 200 ? `${overview.slice(0, 200)}...` : overview}</p>
                             </div>
 
                             <div className="infos-filme">
@@ -35,28 +34,17 @@ export const PageFilmeDetalhes = ({ key_id, title, overview, vote_average, relea
                                 <p>{release_date}</p>
                             </div>
 
-                            <div className="generos-filme">
-                                <p><u>{genres}</u></p>
-                            </div>
-
                             <div className="box-btn-mais-infos">
-                                <Link to={`https://youtube.com/results?search_query=trailer+${title}`} target='blank' className='btn-padrao'><PiPlayFill className='icon' /> Assistir trailer</Link>
-
-                                {jaEstaSalvo ?
-
-                                    <Link to={'#'} className='btn-padrao-favoritar adicionado'><span></span><PiCheckBold className='icon-favoritar' /> Adicionado</Link>
-                                    :
-                                    <Link to={'/favoritos'} className='btn-padrao-favoritar' onClick={salvarFilme}><span></span><PiSparkle className='icon-favoritar' /> Adicionar</Link>
-
-                                }
-
+                                <Link to={`/filme/${link_id}`} className='btn-padrao'><PiInfoBold className='icon' /> Mais informações</Link>
                             </div>
 
-                        </div >
+                            <p className='principal-lancamento'><span><PiCheckCircleFill /></span>Filme em alta</p>
+
+                        </div>
                     )
                 }
 
-            </div >
+            </div>
 
             <div className="fundo-degrade-esquerda"></div>
             <div className="fundo-degrade-baixo"></div>

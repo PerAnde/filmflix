@@ -1,0 +1,9 @@
+.box-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--cinza-escuro-85);
+    padding: 5rem 0;
+}

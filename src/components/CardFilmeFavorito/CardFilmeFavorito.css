@@ -1,11 +1,7 @@
 .card-filme-favorito{
     width: 100%;
     display: flex;
-    gap: 2rem;
-}
-
-.filme-favorito-img {
-    width: 200px;
+    flex-direction: column;
 }
 
 .filme-favorito-img img{

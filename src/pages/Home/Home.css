@@ -13,7 +13,52 @@
 }
 
 .outros-filmes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.outros-filmes > * {
+    flex: 0 0 30rem; /* largura fixa para cada card */
+}
+
+.outros-filmes::-webkit-scrollbar{
+    height: 1rem;
+    background-color: var(--background);
+    border-radius: .5rem;
+}
+
+.outros-filmes::-webkit-scrollbar-thumb{
+    background-color: var(--loading-skeleton);
+    border-radius: .5rem;
+}
+
+@media screen and (max-width: 1450px) {
+    .conteudo-filme-principal {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .conteudo-filme-principal {
+        height: 80vh;
+    }
+
+    .outros-filmes {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .conteudo-filme-principal {
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .conteudo-filme-principal {
+        height: 100vh;
+    }
 }

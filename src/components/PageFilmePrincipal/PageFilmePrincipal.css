@@ -67,10 +67,66 @@ p.principal-lancamento span {
 }
 
 .img-filme-principal {
-    width: 95%;
+    width: 100%;
 }
 
-.img-filme-principa img {
+.img-filme-principal img {
     max-width: 100%;
     object-fit: cover;
+}
+
+@media screen and (max-width: 1450px) {
+
+    .fundo-degrade-baixo,
+    .fundo-degrade-esquerda {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+
+    .fundo-degrade-baixo,
+    .fundo-degrade-esquerda {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+
+    .fundo-degrade-baixo,
+    .fundo-degrade-esquerda {
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .descricao-filme-principal {
+        width: 80%;
+    }
+
+    .fundo-degrade-baixo,
+    .fundo-degrade-esquerda {
+        height: 100vh;
+    }
+
+    .img-filme-principal img {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .nome-filme-principal{
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+
+    .sinopse-filme{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .nome-filme-principal{
+        font-size: 3rem;
+    }
 }

@@ -1,0 +1,43 @@
+.box-outras-paginas{
+    margin-top: 8rem;
+}
+
+.box-outras-paginas h1{
+    margin-bottom: 2rem;
+}
+
+.box-filme-outras-paginas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media screen and (max-width: 1500px){
+    .box-filme-outras-paginas{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1300px){
+    .box-filme-outras-paginas{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .box-filme-outras-paginas{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .box-filme-outras-paginas{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .box-filme-outras-paginas{
+        grid-template-columns: 1fr;
+    }
+}

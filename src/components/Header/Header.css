@@ -67,3 +67,10 @@
     color: var(--branco);
     box-shadow: 0 0 15px var(--azul-40);
 }
+
+/* Menu Mobile */
+@media screen and (max-width: 870px){
+    .btn-menu.menu-mobile{
+        display: none;
+    }
+}

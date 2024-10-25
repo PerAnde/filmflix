@@ -18,6 +18,7 @@
     --cinza-claro: #999999;
     --cinza-escuro-65: rgba(10, 13, 20, .65);
     --cinza-escuro-85: rgba(30, 34, 40, 0.85);
+    --loading-skeleton: #14151a;
     /* Cores Secundarias */
     --azul: #2068f8;
     --azul-40: rgba(50, 118, 255, .4);
@@ -107,6 +108,10 @@ a.btn-padrao.btn-card{
 }
 
 .icon-favoritar{
+    font-size: 3rem;
+}
+
+.icon-detalhe{
     font-size: 3rem;
 }
 
