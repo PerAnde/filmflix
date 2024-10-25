@@ -130,3 +130,9 @@ p.principal-lancamento span {
         font-size: 3rem;
     }
 }
+
+@media screen and (max-width: 430px){
+    .box-btn-mais-infos {
+        gap: 0;
+    }
+}

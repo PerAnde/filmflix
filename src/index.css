@@ -154,3 +154,16 @@ img{
     font-size: 1.2rem;
     color: var(--cinza-claro);
 }
+
+@media screen and (max-width: 430px) {
+    a.btn-padrao{
+        font-size: 1.5rem;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+    a.btn-padrao{
+        font-size: 1.3rem;
+    }
+}
